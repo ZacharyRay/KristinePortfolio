@@ -1,0 +1,17 @@
+// Import settings (fonts, media queries, mixins etc.)
+@import "settings/media-queries";
+@import "settings/colors";
+@import "settings/fonts";
+@import "settings/animation";
+@import "settings/reuse";
+
+// import
+@import "./main/body";
+@import "./nav/burger";
+@import "./nav/desktop";
+@import "./footer/footer.scss";
+@import "./components/contact-card";
+
+// import acfelements
+@import "./acf-elements/acf-explainer.scss";
+@import "./acf-elements/acf-quoteslider.scss";

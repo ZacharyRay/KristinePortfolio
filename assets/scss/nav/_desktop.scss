@@ -1,0 +1,68 @@
+// ================================
+// Desktop Menu
+// ================================
+
+#desktop {
+  display: none;
+  @include min-screen(800px) {
+    display: block;
+    width: 100%;
+    margin: 25px 0px;
+  }
+  #menu-wrap {
+    max-width: 1450px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 25% 70% 5%;
+    
+    aside:nth-child(1) {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left: 10px;
+    }
+    aside:nth-child(3) {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-right: 10px;
+        a{
+            div{
+                height: 50px;
+                width: 50px;
+                background-repeat: no-repeat;
+                background-position: right;
+            }
+        }
+    }
+    div {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        list-style-type: none;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        padding-inline-start: 0;
+        li {
+            margin: 0px 25px;
+          a {
+              @include nav-desktop;
+          }
+        }
+        /* Highlight using link element */
+        li.current_page_item a::after{
+            content: "";
+            width: 100%;
+            border-bottom: 2px solid #3C3B42;
+            animation: fade-in 1s forwards;
+            display: table;
+        }
+      }
+    }
+  }
+}

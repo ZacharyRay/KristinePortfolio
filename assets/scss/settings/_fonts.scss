@@ -1,0 +1,172 @@
+// ================================
+// Fonts
+// ================================
+
+@mixin nav-mobile {
+  font-family: "Red Rose", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 6vmin;
+  text-decoration: none;
+  color: $text-primary;
+}
+@mixin nav-desktop {
+  font-family: "Red Rose", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $text-primary;
+}
+@mixin pre-title {
+  font-family: "Lora", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  color: $text-primary;
+}
+@mixin title-h1 {
+  font-family: "Red Rose", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 69px;
+  color: $brand-primary;
+}
+@mixin title-h1-mobile {
+  font-family: "Red Rose", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  color: $brand-primary;
+}
+@mixin title-h1-ipad {
+  font-family: "Red Rose", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 49px;
+  color: $brand-primary;
+}
+@mixin title-h2 {
+  font-family: "Red Rose", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  color: $text-primary;
+}
+@mixin title-h2-ipad {
+  font-family: "Red Rose", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  color: $text-primary;
+}
+
+@mixin title-h2-mobile {
+  font-family: "Red Rose", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  color: $text-primary;
+}
+@mixin title-h3 {
+  font-family: "Red Rose", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  color: $text-primary;
+}
+@mixin rubrik {
+  font-family: "Lora", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  color: $text-primary;
+  letter-spacing: 0.06em;
+}
+@mixin body-bold {
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  color: $text-primary;
+}
+@mixin body-primary {
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: $text-primary;
+  letter-spacing: 0.06em;
+}
+@mixin body-links-unvisited {
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  text-decoration-line: underline;
+  color: $hyperlinks-unvisited;
+}
+@mixin body-links-unvisited-hover {
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  text-decoration-line: underline;
+  color: $hyperlinks-unvisited-hover;
+}
+@mixin body-links-visited {
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 140%;
+  text-decoration-line: underline;
+  color: $hyperlinks-visited;
+}
+@mixin body-links-visited-hover {
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  text-decoration-line: underline;
+  color: $hyperlinks-visited-hover;
+}
+@mixin small-copy {
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 11px;
+  text-transform: uppercase;
+  color: $text-primary;
+  letter-spacing: 0.06em;
+}
+@mixin button-primary {
+  font-family: "Red Rose", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: $text-primary;
+  letter-spacing: 0.06em;
+}
+@mixin button-link-default {
+  font-family: "Red Rose", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  text-decoration-line: underline;
+  text-transform: uppercase;
+  color: $text-primary;
+}
+@mixin title-subtitle {
+  font-family: "Lora", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  color: $text-primary;
+}

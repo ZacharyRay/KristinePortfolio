@@ -1,0 +1,109 @@
+#left-explainer-section{
+    width: 100%;
+    #left-explainer-wrap{
+        background-color: $white;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: 0% 100%;
+        width: 100%;
+        @include min-screen(800px){
+            grid-template-rows: 2% 98%;
+        }
+        @include min-screen(1170px){
+            width: 80%;
+            grid-template-rows: 15% 85%;
+        }
+        #left-explainer-h1{
+            transform: translateY(-97px);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            @include min-screen(1170px){
+                justify-content: flex-end;
+                width: 86%;
+            }
+            @include min-screen(1388px){
+                transform: translateY(-139px);
+                width: 93%;
+            }
+            h1{
+                margin-block-end: 0em;
+                max-width: 700px;
+                margin-block-start: 0;
+                padding: 30px;
+                @include title-h1-mobile;
+                @include min-screen(400px){
+                    @include title-h1-ipad;
+                }
+                @include min-screen(800px){
+                    max-width: none;
+                    width: 700px;
+                    @include title-h1-ipad;
+                }
+                @include min-screen(1388px){
+                    @include title-h1;
+                    width: 1000px;
+                }
+            }
+        }
+        .left-explainer-col-2-left-auto{
+            display: grid;
+            place-items: center;
+            padding: 30px;
+            @include min-screen(1170px){
+                place-items: normal;
+                grid-template-columns: auto 900px;
+                grid-gap: 28px;
+            }
+            .left-explainer-left-col{
+                display: none;
+                @include min-screen(1170px){
+                    display: block;
+                    border-top: 1px solid black;
+                    transform: translateY(35px);
+                }
+            }
+            .left-explainer-right-col{
+                max-width: 700px;
+                .explainer-text{
+                    h3{
+                        @include rubrik;
+                    }
+                    p{
+                        @include body-primary;
+                    }
+                }
+                #contact-card-enabled {
+                    transform: translateY(85px);
+                }
+                #outgoing-buttons {
+                    display: flex;
+                    flex-direction: row;
+                    width: 170px;
+                    justify-content: space-between;
+                    margin-top: 40px;
+                    .explainer-button-link {
+                        #explainer-button {
+                            border-radius: 50px;
+                            height: 30px;
+                            width: 120px;
+                            background-color: white;
+                            border-color: black;
+                            border-width: 1px;
+                            cursor: pointer;
+                        }
+                    }
+                    .explainer-button-socials {
+                        #left-explainer-social-button {
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: contain;
+                            width: 35px;
+                            height: 35px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

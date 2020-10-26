@@ -1,0 +1,61 @@
+#quote-slider {
+  width: 100%;
+  #slider-wrap {
+    #quote-wrap {
+      max-width: 1500px;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: 35% 65%;
+      margin: auto;
+      @include min-screen(800px) {
+        grid-template-columns: 15% 85%;
+        grid-template-rows: repeat(1, 1fr);
+      }
+      #quote-icon {
+        background: no-repeat center;
+        background-size: contain;
+        width: 100%;
+        height: 70px;
+        display: grid;
+        @include min-screen(800px) {
+          height: 140px;
+        }
+      }
+      #the-quote {
+        p {
+          margin-block-end: 0em;
+        }
+        @include title-h2-mobile;
+        @include min-screen(800px) {
+          @include title-h2-ipad;
+        }
+        @include min-screen(1170px) {
+          @include title-h2;
+        }
+      }
+    }
+    #quote-author {
+      h3 {
+        @include title-subtitle;
+      }
+      p {
+        @include small-copy;
+      }
+    }
+  }
+}
+#quote-slider-btns {
+    width: 100%;
+    #quote-arrow-wrap {
+      max-width: 1500px;
+      display: flex;
+      flex-direction: row;
+      justify-items: center;
+      justify-content: flex-end;
+      #quote-arrows {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+
