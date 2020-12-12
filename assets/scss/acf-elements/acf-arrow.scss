@@ -1,0 +1,28 @@
+#arrow-wrapper {
+    display: none;
+  @include min-screen(800px) {
+      display: block;
+    width: 85vw;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    height: 640px;
+    position: absolute;
+    justify-content: flex-end;
+    z-index: 9;
+  }
+  #arrow-inner-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    .arrow-icon {
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      height: 40px;
+      width: 40px;
+    }
+    .arrow-icon:hover {
+        cursor: pointer;
+    }
+  }
+}

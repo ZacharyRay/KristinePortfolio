@@ -4,6 +4,48 @@
   to {
     opacity: 1; } }
 
+.animate {
+  animation-name: expand;
+  animation-duration: 0.5s; }
+
+@keyframes expand {
+  0% {
+    transform: translateX(-300px); }
+  100% {
+    transform: translateX(0px); } }
+
+.animate-pe-right {
+  animation-name: expand-right;
+  animation-duration: 1s; }
+
+@keyframes expand-right {
+  0% {
+    transform: translateX(300px); }
+  100% {
+    transform: translateX(0px); } }
+
+.animate-pe-left {
+  animation-name: expand-left;
+  animation-duration: 1s; }
+
+@keyframes expand-left {
+  0% {
+    transform: translateX(-300px); }
+  100% {
+    transform: translateX(0px); } }
+
+@keyframes img-hover {
+  0% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1.04); } }
+
+@keyframes img-hover-explainer-right {
+  0% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1.04); } }
+
 .center-all {
   display: grid;
   place-items: center; }
@@ -23,18 +65,13 @@ body {
   color: #000;
   background-color: #F4F4F4; }
 
-@media screen and (min-width: 800px) {
-  nav {
-    margin: 0px 0px 220px 0px; } }
-
 :root {
   --td: 150ms;
   --te: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 #burger {
   display: block;
-  height: 80px;
-  margin-bottom: 100px; }
+  height: 80px; }
   #burger #burger-bg {
     background-color: #F4F4F4;
     opacity: 0.8;
@@ -237,14 +274,18 @@ body {
           display: table; }
 
 footer {
+  margin-top: 30px;
   width: 100%;
   background-color: #F0E5DA; }
   footer #line-wrap {
+    display: none;
     grid-template-columns: auto minmax(auto, 1150px) auto;
-    display: grid;
     height: 108px;
     width: 100%;
     position: absolute; }
+    @media screen and (min-width: 800px) {
+      footer #line-wrap {
+        display: grid; } }
     footer #line-wrap .line-box:nth-child(1) {
       border-bottom: 1px solid black; }
   footer #footer-section-wrap {
@@ -272,27 +313,41 @@ footer {
       display: grid;
       max-width: 1400px;
       margin: auto;
-      grid-template-rows: repeat(2, 1fr); }
+      grid-template-rows: repeat(1, 1fr); }
       @media screen and (min-width: 900px) {
         footer #info-footer #info-footer-wrap {
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(1, 1fr);
           grid-template-rows: repeat(1, 1fr); } }
       footer #info-footer #info-footer-wrap .info-section {
         display: grid;
         place-items: center; }
         footer #info-footer #info-footer-wrap .info-section .info {
-          width: 400px;
-          display: flex;
-          justify-content: space-between; }
+          width: 110%;
+          display: grid;
+          justify-content: space-evenly;
+          align-items: center;
+          height: 130px;
+          grid-template-areas: "a a"  "c c" "d b"; }
+          @media screen and (min-width: 800px) {
+            footer #info-footer #info-footer-wrap .info-section .info {
+              height: 60px;
+              grid-template-areas: "a b c d"; } }
           footer #info-footer #info-footer-wrap .info-section .info p {
+            grid-area: a;
             color: #7E7C8A; }
-          footer #info-footer #info-footer-wrap .info-section .info .socials-link .footer-socials-icon {
-            height: 50px;
-            width: 50px;
-            background-repeat: no-repeat;
-            background-position: center; }
+          footer #info-footer #info-footer-wrap .info-section .info .socials-link {
+            grid-area: b; }
+            footer #info-footer #info-footer-wrap .info-section .info .socials-link .footer-socials-icon {
+              height: 50px;
+              width: 50px;
+              background-repeat: no-repeat;
+              background-position: center; }
           footer #info-footer #info-footer-wrap .info-section .info .footer-info {
             color: #7E7C8A; }
+          footer #info-footer #info-footer-wrap .info-section .info .footer-email {
+            grid-area: c; }
+          footer #info-footer #info-footer-wrap .info-section .info .footer-phone {
+            grid-area: d; }
 
 #contact-card {
   display: grid;
@@ -326,7 +381,7 @@ footer {
       font-size: 10px;
       line-height: 11px;
       text-transform: uppercase;
-      color: #3C3B42;
+      color: #7E7C8A;
       letter-spacing: 0.06em;
       margin-block-start: 0em;
       margin-block-end: 0;
@@ -359,23 +414,42 @@ footer {
       letter-spacing: 0.06em;
       letter-spacing: 0.16em; }
 
+#outgoing-buttons {
+  display: flex;
+  flex-direction: row;
+  width: 170px;
+  justify-content: space-between;
+  margin-top: 40px; }
+  #outgoing-buttons .explainer-button-link #explainer-button {
+    border-radius: 50px;
+    height: 30px;
+    width: 120px;
+    background-color: white;
+    border-color: black;
+    border-width: 1px;
+    cursor: pointer; }
+  #outgoing-buttons .explainer-button-socials #left-explainer-social-button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 35px;
+    height: 35px; }
+
 #left-explainer-section {
-  width: 100%; }
+  width: 100%;
+  transform: translateY(-70px); }
+  @media screen and (min-width: 800px) {
+    #left-explainer-section {
+      width: 80%;
+      margin-bottom: 152px;
+      transform: translateY(-55px); } }
   #left-explainer-section #left-explainer-wrap {
-    background-color: #fff;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: 0% 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
     width: 100%; }
-    @media screen and (min-width: 800px) {
-      #left-explainer-section #left-explainer-wrap {
-        grid-template-rows: 2% 98%; } }
-    @media screen and (min-width: 1170px) {
-      #left-explainer-section #left-explainer-wrap {
-        width: 80%;
-        grid-template-rows: 15% 85%; } }
     #left-explainer-section #left-explainer-wrap #left-explainer-h1 {
-      transform: translateY(-97px);
+      transform: translateY(54px);
       width: 100%;
       display: flex;
       justify-content: center; }
@@ -385,7 +459,7 @@ footer {
           width: 86%; } }
       @media screen and (min-width: 1388px) {
         #left-explainer-section #left-explainer-wrap #left-explainer-h1 {
-          transform: translateY(-139px);
+          transform: translateY(62px);
           width: 93%; } }
       #left-explainer-section #left-explainer-wrap #left-explainer-h1 h1 {
         margin-block-end: 0em;
@@ -424,21 +498,26 @@ footer {
     #left-explainer-section #left-explainer-wrap .left-explainer-col-2-left-auto {
       display: grid;
       place-items: center;
-      padding: 30px; }
+      background-color: #fff;
+      min-height: 380px;
+      padding-bottom: 40px; }
       @media screen and (min-width: 1170px) {
         #left-explainer-section #left-explainer-wrap .left-explainer-col-2-left-auto {
           place-items: normal;
           grid-template-columns: auto 900px;
-          grid-gap: 28px; } }
+          grid-gap: 28px;
+          padding-top: 40px;
+          min-height: 320px; } }
       #left-explainer-section #left-explainer-wrap .left-explainer-col-2-left-auto .left-explainer-left-col {
         display: none; }
         @media screen and (min-width: 1170px) {
           #left-explainer-section #left-explainer-wrap .left-explainer-col-2-left-auto .left-explainer-left-col {
+            margin-top: 63px;
             display: block;
-            border-top: 1px solid black;
-            transform: translateY(35px); } }
+            border-top: 1px solid black; } }
       #left-explainer-section #left-explainer-wrap .left-explainer-col-2-left-auto .left-explainer-right-col {
-        max-width: 700px; }
+        max-width: 700px;
+        padding: 30px; }
         #left-explainer-section #left-explainer-wrap .left-explainer-col-2-left-auto .left-explainer-right-col .explainer-text h3 {
           font-family: "Lora", sans-serif;
           font-style: normal;
@@ -452,98 +531,699 @@ footer {
           font-weight: normal;
           font-size: 16px;
           color: #3C3B42;
-          letter-spacing: 0.06em; }
-        #left-explainer-section #left-explainer-wrap .left-explainer-col-2-left-auto .left-explainer-right-col #contact-card-enabled {
-          transform: translateY(85px); }
-        #left-explainer-section #left-explainer-wrap .left-explainer-col-2-left-auto .left-explainer-right-col #outgoing-buttons {
-          display: flex;
-          flex-direction: row;
-          width: 170px;
-          justify-content: space-between;
-          margin-top: 40px; }
-          #left-explainer-section #left-explainer-wrap .left-explainer-col-2-left-auto .left-explainer-right-col #outgoing-buttons .explainer-button-link #explainer-button {
-            border-radius: 50px;
-            height: 30px;
-            width: 120px;
-            background-color: white;
-            border-color: black;
-            border-width: 1px;
-            cursor: pointer; }
-          #left-explainer-section #left-explainer-wrap .left-explainer-col-2-left-auto .left-explainer-right-col #outgoing-buttons .explainer-button-socials #left-explainer-social-button {
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            width: 35px;
-            height: 35px; }
+          letter-spacing: 0.06em;
+          line-height: 1.6rem; }
+        @media screen and (min-width: 1388px) {
+          #left-explainer-section #left-explainer-wrap .left-explainer-col-2-left-auto .left-explainer-right-col #contact-card-enabled {
+            transform: translateX(-206px); } }
+        #left-explainer-section #left-explainer-wrap .left-explainer-col-2-left-auto .left-explainer-right-col #contact-card-enabled #contact-card {
+          grid-template-columns: 1fr;
+          grid-template-rows: repeat(2, 1fr);
+          width: 100%; }
+          @media screen and (min-width: 800px) {
+            #left-explainer-section #left-explainer-wrap .left-explainer-col-2-left-auto .left-explainer-right-col #contact-card-enabled #contact-card {
+              width: 400px;
+              grid-template-columns: repeat(2, 1fr);
+              grid-template-rows: 1fr; } }
 
 #quote-slider {
-  width: 100%; }
-  #quote-slider #slider-wrap #quote-wrap {
-    max-width: 1500px;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: 35% 65%;
-    margin: auto; }
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px 0px 40px 0px; }
+  @media screen and (min-width: 800px) {
+    #quote-slider {
+      margin: 100px 0px 100px 0px; } }
+  #quote-slider #quote-slider-btns {
+    width: 100%; }
+    #quote-slider #quote-slider-btns #quote-arrow-wrap {
+      max-width: 1500px;
+      display: flex;
+      flex-direction: row;
+      justify-items: center;
+      justify-content: center;
+      padding: 0px 30px;
+      margin: auto; }
+      @media screen and (min-width: 800px) {
+        #quote-slider #quote-slider-btns #quote-arrow-wrap {
+          justify-content: flex-end; } }
+      #quote-slider #quote-slider-btns #quote-arrow-wrap #quote-arrows {
+        display: flex;
+        flex-direction: row; }
+        @media screen and (min-width: 800px) {
+          #quote-slider #quote-slider-btns #quote-arrow-wrap #quote-arrows {
+            transform: translateX(-100%); } }
+        #quote-slider #quote-slider-btns #quote-arrow-wrap #quote-arrows .quote-slider-btn {
+          border: none;
+          background-color: #F4F4F4;
+          cursor: pointer;
+          font-family: "Ubuntu", sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 21px;
+          color: #3C3B42; }
+        #quote-slider #quote-slider-btns #quote-arrow-wrap #quote-arrows .quote-slider-btn:focus {
+          outline: none; }
+        #quote-slider #quote-slider-btns #quote-arrow-wrap #quote-arrows #quote-slide-indicator {
+          display: flex;
+          flex-direction: row;
+          font-family: "Ubuntu", sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 21px;
+          color: #3C3B42; }
+  #quote-slider #slider-wrap {
+    height: auto;
+    display: flex;
+    flex-direction: column; }
     @media screen and (min-width: 800px) {
-      #quote-slider #slider-wrap #quote-wrap {
-        grid-template-columns: 15% 85%;
-        grid-template-rows: repeat(1, 1fr); } }
-    #quote-slider #slider-wrap #quote-wrap #quote-icon {
+      #quote-slider #slider-wrap {
+        display: block; } }
+    #quote-slider #slider-wrap #quote-icon {
       background: no-repeat center;
       background-size: contain;
       width: 100%;
       height: 70px;
       display: grid; }
       @media screen and (min-width: 800px) {
-        #quote-slider #slider-wrap #quote-wrap #quote-icon {
-          height: 140px; } }
-    #quote-slider #slider-wrap #quote-wrap #the-quote {
+        #quote-slider #slider-wrap #quote-icon {
+          height: 140px;
+          transform: translateY(-100px);
+          margin-left: 55px; } }
+    #quote-slider #slider-wrap #quote-wrap {
+      max-width: 1500px;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      margin: auto; }
+      @media screen and (min-width: 800px) {
+        #quote-slider #slider-wrap #quote-wrap {
+          grid-template-columns: 15% 85%;
+          grid-template-rows: repeat(1, 1fr);
+          transform: translateX(-7%); } }
+      #quote-slider #slider-wrap #quote-wrap .quote {
+        display: none; }
+      #quote-slider #slider-wrap #quote-wrap #the-quote {
+        font-family: "Red Rose", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 30px;
+        color: #3C3B42; }
+        #quote-slider #slider-wrap #quote-wrap #the-quote p {
+          margin-block-end: 0em;
+          margin-block-start: 0em; }
+        @media screen and (min-width: 800px) {
+          #quote-slider #slider-wrap #quote-wrap #the-quote {
+            font-family: "Red Rose", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 35px;
+            color: #3C3B42; } }
+        @media screen and (min-width: 1170px) {
+          #quote-slider #slider-wrap #quote-wrap #the-quote {
+            font-family: "Red Rose", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 48px;
+            color: #3C3B42; } }
+      #quote-slider #slider-wrap #quote-wrap #quote-author {
+        display: none; }
+        @media screen and (min-width: 800px) {
+          #quote-slider #slider-wrap #quote-wrap #quote-author {
+            grid-column: 2 / 3; } }
+        #quote-slider #slider-wrap #quote-wrap #quote-author h3 {
+          font-family: "Lora", sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 22px;
+          color: #3C3B42; }
+        #quote-slider #slider-wrap #quote-wrap #quote-author p {
+          font-family: "Ubuntu", sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 10px;
+          line-height: 11px;
+          text-transform: uppercase;
+          color: #7E7C8A;
+          letter-spacing: 0.06em; }
+
+.quote-display {
+  display: block !important; }
+
+#p-h-wrapper #p-h-inner-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 75% 25%;
+  max-width: 1450px;
+  margin: auto; }
+  @media screen and (min-width: 800px) {
+    #p-h-wrapper #p-h-inner-wrapper {
+      grid-template-columns: 40% 70%;
+      grid-template-rows: 1fr; } }
+  #p-h-wrapper #p-h-inner-wrapper #p-h-l-col .p-h-content {
+    padding: 0px 10px; }
+    @media screen and (min-width: 1450px) {
+      #p-h-wrapper #p-h-inner-wrapper #p-h-l-col .p-h-content {
+        padding: 0px 0px; } }
+    #p-h-wrapper #p-h-inner-wrapper #p-h-l-col .p-h-content h3 {
       font-family: "Red Rose", sans-serif;
       font-style: normal;
       font-weight: normal;
-      font-size: 30px;
+      font-size: 48px;
       color: #3C3B42; }
-      #quote-slider #slider-wrap #quote-wrap #the-quote p {
-        margin-block-end: 0em; }
-      @media screen and (min-width: 800px) {
-        #quote-slider #slider-wrap #quote-wrap #the-quote {
-          font-family: "Red Rose", sans-serif;
-          font-style: normal;
-          font-weight: normal;
-          font-size: 35px;
-          color: #3C3B42; } }
-      @media screen and (min-width: 1170px) {
-        #quote-slider #slider-wrap #quote-wrap #the-quote {
-          font-family: "Red Rose", sans-serif;
-          font-style: normal;
-          font-weight: normal;
-          font-size: 48px;
-          color: #3C3B42; } }
-  #quote-slider #slider-wrap #quote-author h3 {
-    font-family: "Lora", sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 22px;
-    color: #3C3B42; }
-  #quote-slider #slider-wrap #quote-author p {
-    font-family: "Ubuntu", sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 10px;
-    line-height: 11px;
-    text-transform: uppercase;
-    color: #3C3B42;
-    letter-spacing: 0.06em; }
+    #p-h-wrapper #p-h-inner-wrapper #p-h-l-col .p-h-content p {
+      font-family: "Lora", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 22px;
+      color: #3C3B42; }
+  #p-h-wrapper #p-h-inner-wrapper #p-h-r-col #p-h-image {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 208px; }
+    @media screen and (min-width: 800px) {
+      #p-h-wrapper #p-h-inner-wrapper #p-h-r-col #p-h-image {
+        height: 897px;
+        background-position: top; } }
 
-#quote-slider-btns {
-  width: 100%; }
-  #quote-slider-btns #quote-arrow-wrap {
-    max-width: 1500px;
-    display: flex;
-    flex-direction: row;
-    justify-items: center;
-    justify-content: flex-end; }
-    #quote-slider-btns #quote-arrow-wrap #quote-arrows {
+#p-two-col-wrapper {
+  margin: 0px 10px;
+  background-color: #fff; }
+  @media screen and (min-width: 1450px) {
+    #p-two-col-wrapper {
+      margin: 0px 0px; } }
+  #p-two-col-wrapper #p-two-col-inner-wrapper {
+    max-width: 1450px;
+    margin: auto;
+    display: grid;
+    grid-template-areas: "a" "b" "c"; }
+    @media screen and (min-width: 800px) {
+      #p-two-col-wrapper #p-two-col-inner-wrapper {
+        grid-template-areas: "a b" "c c";
+        grid-gap: 100px; } }
+    #p-two-col-wrapper #p-two-col-inner-wrapper #p-two-col-l {
+      grid-area: a; }
+      #p-two-col-wrapper #p-two-col-inner-wrapper #p-two-col-l h3 {
+        font-family: "Red Rose", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 35px;
+        color: #3C3B42; }
+      #p-two-col-wrapper #p-two-col-inner-wrapper #p-two-col-l p {
+        font-family: "Ubuntu", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        color: #3C3B42;
+        letter-spacing: 0.06em;
+        line-height: 1.6rem; }
+    #p-two-col-wrapper #p-two-col-inner-wrapper #p-two-col-r {
+      grid-area: b; }
+      #p-two-col-wrapper #p-two-col-inner-wrapper #p-two-col-r h3 {
+        font-family: "Red Rose", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 35px;
+        color: #3C3B42; }
+      #p-two-col-wrapper #p-two-col-inner-wrapper #p-two-col-r p {
+        font-family: "Ubuntu", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        color: #3C3B42;
+        letter-spacing: 0.06em;
+        line-height: 1.6rem; }
+    #p-two-col-wrapper #p-two-col-inner-wrapper #p-two-col-image {
+      grid-area: c;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: top;
+      height: 200px; }
+      @media screen and (min-width: 900px) {
+        #p-two-col-wrapper #p-two-col-inner-wrapper #p-two-col-image {
+          height: 500px; } }
+
+#p-e-wrapper {
+  margin: 10px 0px; }
+  #p-e-wrapper #p-e-inner-wrapper {
+    margin: 0px 10px; }
+    @media screen and (min-width: 800px) {
+      #p-e-wrapper #p-e-inner-wrapper {
+        margin: 0px 0px; } }
+    #p-e-wrapper #p-e-inner-wrapper #p-e-col {
+      max-width: 700px;
+      margin: auto; }
+      #p-e-wrapper #p-e-inner-wrapper #p-e-col .p-e-col-double {
+        display: grid;
+        grid-template-areas: "a" "b" "c"; }
+        @media screen and (min-width: 800px) {
+          #p-e-wrapper #p-e-inner-wrapper #p-e-col .p-e-col-double {
+            grid-template-areas: "a b" "c c"; } }
+        #p-e-wrapper #p-e-inner-wrapper #p-e-col .p-e-col-double .p-e-col-l {
+          grid-area: a; }
+          #p-e-wrapper #p-e-inner-wrapper #p-e-col .p-e-col-double .p-e-col-l h3 {
+            font-family: "Red Rose", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 35px;
+            color: #3C3B42; }
+          #p-e-wrapper #p-e-inner-wrapper #p-e-col .p-e-col-double .p-e-col-l p {
+            font-family: "Ubuntu", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            color: #3C3B42;
+            letter-spacing: 0.06em;
+            line-height: 1.6rem; }
+        #p-e-wrapper #p-e-inner-wrapper #p-e-col .p-e-col-double .p-e-col-r {
+          grid-area: b; }
+          #p-e-wrapper #p-e-inner-wrapper #p-e-col .p-e-col-double .p-e-col-r h3 {
+            font-family: "Red Rose", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 35px;
+            color: #3C3B42; }
+          #p-e-wrapper #p-e-inner-wrapper #p-e-col .p-e-col-double .p-e-col-r p {
+            font-family: "Ubuntu", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            color: #3C3B42;
+            letter-spacing: 0.06em;
+            line-height: 1.6rem; }
+        #p-e-wrapper #p-e-inner-wrapper #p-e-col .p-e-col-double .p-e-col-image {
+          grid-area: c;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          height: 300px; }
+      #p-e-wrapper #p-e-inner-wrapper #p-e-col .p-e-col-center {
+        display: grid;
+        grid-template-areas: "a" "b"; }
+        #p-e-wrapper #p-e-inner-wrapper #p-e-col .p-e-col-center .p-e-col-center-text {
+          grid-area: a; }
+          #p-e-wrapper #p-e-inner-wrapper #p-e-col .p-e-col-center .p-e-col-center-text h3 {
+            font-family: "Red Rose", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 35px;
+            color: #3C3B42; }
+          #p-e-wrapper #p-e-inner-wrapper #p-e-col .p-e-col-center .p-e-col-center-text p {
+            font-family: "Ubuntu", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            color: #3C3B42;
+            letter-spacing: 0.06em;
+            line-height: 1.6rem; }
+        #p-e-wrapper #p-e-inner-wrapper #p-e-col .p-e-col-center .p-e-col-center-image {
+          grid-area: b;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          height: 300px; }
+
+#pe-wrapper {
+  margin-bottom: 0px; }
+  @media screen and (min-width: 800px) {
+    #pe-wrapper {
+      margin-top: 200px;
+      margin-bottom: 200px; } }
+  #pe-wrapper #pe-inner-wrapper {
+    display: grid;
+    grid-template-areas: "b" "a";
+    width: 100%; }
+    @media screen and (min-width: 800px) {
+      #pe-wrapper #pe-inner-wrapper {
+        grid-template-areas: "a b";
+        grid-template-columns: 30% 70%; } }
+    #pe-wrapper #pe-inner-wrapper #pe-col-left {
+      grid-area: a;
+      width: 110%;
+      transform: translateY(96px); }
+      #pe-wrapper #pe-inner-wrapper #pe-col-left #pe-col-left-inner .pe-col-left-inner-line {
+        display: none;
+        margin-block-start: 0em;
+        margin-block-end: 0.5em;
+        transform: translateX(0px);
+        border-width: 0px;
+        border-top: 1px solid #000; }
+        @media screen and (min-width: 800px) {
+          #pe-wrapper #pe-inner-wrapper #pe-col-left #pe-col-left-inner .pe-col-left-inner-line {
+            display: block;
+            width: 110%; } }
+        @media screen and (min-width: 1650px) {
+          #pe-wrapper #pe-inner-wrapper #pe-col-left #pe-col-left-inner .pe-col-left-inner-line {
+            width: 130%; } }
+      #pe-wrapper #pe-inner-wrapper #pe-col-left #pe-col-left-inner .pe-col-left-inner-img {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: left;
+        height: 300px;
+        transform: translate(0px, -160px); }
+        @media screen and (min-width: 800px) {
+          #pe-wrapper #pe-inner-wrapper #pe-col-left #pe-col-left-inner .pe-col-left-inner-img {
+            height: 753px;
+            background-position: bottom;
+            transform: translate(0px, -90px); } }
+        @media screen and (min-width: 1655px) {
+          #pe-wrapper #pe-inner-wrapper #pe-col-left #pe-col-left-inner .pe-col-left-inner-img {
+            height: 800px;
+            transform: translate(0px, 27px); } }
+      #pe-wrapper #pe-inner-wrapper #pe-col-left #pe-col-left-inner .pe-col-left-inner-img:hover {
+        animation-name: img-hover-explainer-right;
+        animation-duration: 1s;
+        animation-fill-mode: forwards; }
+    #pe-wrapper #pe-inner-wrapper #pe-col-right {
+      grid-area: b;
+      background-color: #fff; }
+      @media screen and (min-width: 1300px) {
+        #pe-wrapper #pe-inner-wrapper #pe-col-right {
+          max-height: 630px; } }
+      #pe-wrapper #pe-inner-wrapper #pe-col-right .pe-col-right-content {
+        padding: 40px 10px 100px 10px;
+        max-width: 700px;
+        margin: auto; }
+        @media screen and (min-width: 800px) {
+          #pe-wrapper #pe-inner-wrapper #pe-col-right .pe-col-right-content {
+            padding: 40px 100px 40px 100px; } }
+        #pe-wrapper #pe-inner-wrapper #pe-col-right .pe-col-right-content h3 {
+          font-family: "Ubuntu", sans-serif;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 18px;
+          color: #3C3B42; }
+          @media screen and (min-width: 800px) {
+            #pe-wrapper #pe-inner-wrapper #pe-col-right .pe-col-right-content h3 {
+              font-family: "Red Rose", sans-serif;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 35px;
+              color: #3C3B42; } }
+        #pe-wrapper #pe-inner-wrapper #pe-col-right .pe-col-right-content p {
+          font-family: "Ubuntu", sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          color: #3C3B42;
+          letter-spacing: 0.06em;
+          line-height: 1.6rem; }
+        #pe-wrapper #pe-inner-wrapper #pe-col-right .pe-col-right-content #pe-col-right-buttons {
+          display: none; }
+          @media screen and (min-width: 800px) {
+            #pe-wrapper #pe-inner-wrapper #pe-col-right .pe-col-right-content #pe-col-right-buttons {
+              display: block; } }
+
+#ph-page-name {
+  display: block;
+  max-width: 800px;
+  margin: auto; }
+  @media screen and (min-width: 1055px) {
+    #ph-page-name {
+      display: none; } }
+  #ph-page-name #ph-page-name-content h1 {
+    font-family: "Red Rose", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    color: #DD896E;
+    margin-left: 10px; }
+
+#ph-wrapper {
+  display: none;
+  margin: 90px 0px 90px 0px; }
+  @media screen and (min-width: 1055px) {
+    #ph-wrapper {
+      display: block; } }
+  #ph-wrapper #ph-inner-wrapper {
+    display: grid;
+    grid-template-columns: 0% 100%;
+    max-width: 1300px;
+    margin: auto; }
+    #ph-wrapper #ph-inner-wrapper #ph-quote-icon {
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      height: 130px;
+      width: 130px;
+      transform: translateX(14px); }
+      @media screen and (min-width: 1255px) {
+        #ph-wrapper #ph-inner-wrapper #ph-quote-icon {
+          height: 150px;
+          width: 150px;
+          transform: translateX(85px); } }
+    #ph-wrapper #ph-inner-wrapper #ph-content h1 {
+      font-family: "Red Rose", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 69px;
+      color: #3C3B42; }
+
+#pc-l-wrapper, #pc-r-wrapper {
+  margin-bottom: 100px; }
+  @media screen and (min-width: 1180px) {
+    #pc-l-wrapper, #pc-r-wrapper {
+      margin-bottom: 0px; } }
+  #pc-l-wrapper #pc-l-inner-wrapper, #pc-l-wrapper #pc-r-inner-wrapper, #pc-r-wrapper #pc-l-inner-wrapper, #pc-r-wrapper #pc-r-inner-wrapper {
+    display: grid;
+    grid-template-areas: "a" "b";
+    max-width: 1455px;
+    margin: auto;
+    padding: 10px;
+    place-items: center;
+    grid-gap: 20px; }
+    @media screen and (min-width: 1180px) {
+      #pc-l-wrapper #pc-l-inner-wrapper, #pc-l-wrapper #pc-r-inner-wrapper, #pc-r-wrapper #pc-l-inner-wrapper, #pc-r-wrapper #pc-r-inner-wrapper {
+        grid-template-areas: "a b";
+        margin-bottom: 200px;
+        grid-gap: 0px; } }
+    #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap {
+      width: 100%;
       display: flex;
-      flex-direction: row; }
+      justify-content: center;
+      align-items: center; }
+      @media screen and (min-width: 1180px) {
+        #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap {
+          justify-content: flex-start; } }
+      #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap #pc-l-col-l, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap #pc-r-col-r, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap #pc-l-col-l, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap #pc-r-col-r, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap #pc-l-col-l, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap #pc-r-col-r, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap #pc-l-col-l, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap #pc-r-col-r, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap #pc-l-col-l, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap #pc-r-col-r, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap #pc-l-col-l, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap #pc-r-col-r, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap #pc-l-col-l, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap #pc-r-col-r, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap #pc-l-col-l, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap #pc-r-col-r {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 300px; }
+        @media screen and (min-width: 1180px) {
+          #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap #pc-l-col-l, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap #pc-r-col-r, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap #pc-l-col-l, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap #pc-r-col-r, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap #pc-l-col-l, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap #pc-r-col-r, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap #pc-l-col-l, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap #pc-r-col-r, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap #pc-l-col-l, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap #pc-r-col-r, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap #pc-l-col-l, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap #pc-r-col-r, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap #pc-l-col-l, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap #pc-r-col-r, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap #pc-l-col-l, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap #pc-r-col-r {
+            width: 700px;
+            height: 400px; } }
+      #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap #pc-l-col-l:hover, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap #pc-r-col-r:hover, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap #pc-l-col-l:hover, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap #pc-r-col-r:hover, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap #pc-l-col-l:hover, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap #pc-r-col-r:hover, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap #pc-l-col-l:hover, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap #pc-r-col-r:hover, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap #pc-l-col-l:hover, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-l-wrap #pc-r-col-r:hover, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap #pc-l-col-l:hover, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-r-wrap #pc-r-col-r:hover, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap #pc-l-col-l:hover, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-l-wrap #pc-r-col-r:hover, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap #pc-l-col-l:hover, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-r-wrap #pc-r-col-r:hover {
+        animation-name: img-hover;
+        animation-duration: 1s;
+        animation-fill-mode: forwards; }
+    #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      transform: translateY(0px); }
+      @media screen and (min-width: 1180px) {
+        #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l {
+          transform: translateY(180px); } }
+      #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap {
+        width: auto; }
+        @media screen and (min-width: 500px) {
+          #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap {
+            width: 450px; } }
+        #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap p, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap p, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap p, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap p, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap p, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap p, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap p, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap p, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap p, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap p, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap p, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap p, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap p, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap p, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap p, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap p {
+          font-family: "Ubuntu", sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 10px;
+          line-height: 11px;
+          text-transform: uppercase;
+          color: #7E7C8A;
+          letter-spacing: 0.06em;
+          margin-block-start: 0em;
+          margin-block-end: 0em; }
+        #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline {
+          display: flex;
+          flex-direction: row;
+          align-items: center; }
+          #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter {
+            display: none; }
+            @media screen and (min-width: 1180px) {
+              #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline .pc-counter, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline .pc-counter {
+                display: block;
+                position: absolute;
+                transform: translateX(-45px);
+                font-family: "Ubuntu", sans-serif;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 21px;
+                color: #3C3B42; } }
+          #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline h3, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline h3, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline h3, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline h3, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline h3, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline h3, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline h3, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline h3, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline h3, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline h3, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline h3, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline h3, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline h3, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline h3, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline h3, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline h3, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline h3, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline h3, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline h3, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline h3, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline h3, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline h3, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline h3, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline h3, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-l-col-r-headline h3, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-r-col-l-headline h3, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-l-col-r-headline h3, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-r-col-l-headline h3, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-l-col-r-headline h3, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-r-col-l-headline h3, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-l-col-r-headline h3, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-r-col-l-headline h3 {
+            font-family: "Red Rose", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 35px;
+            color: #3C3B42;
+            margin-block-start: 0em;
+            margin-block-end: 0em; }
+        #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right {
+          display: none; }
+          @media screen and (min-width: 1180px) {
+            #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right {
+              display: grid; } }
+          #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-l-circle, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-l-circle, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-l-circle, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-l-circle, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-l-circle, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-l-circle, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-l-circle, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-l-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-l-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-l-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-l-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-l-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-l-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-l-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-l-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-l-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-l-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-l-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-l-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-l-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-l-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-l-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-l-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-l-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-l-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-l-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-l-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-l-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-l-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-l-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-l-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-l-circle {
+            width: 15px;
+            height: 15px;
+            border: 1px solid black;
+            border-radius: 50px;
+            justify-self: flex-start;
+            transform: translate(-277px, 9px); }
+          #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-line-l, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-line-l, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-line-l, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-line-l, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-line-l, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-line-l, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-line-l, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-line-l, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-line-l, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-line-l, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-line-l, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-line-l, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-line-l, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-line-l, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-line-l, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-line-l, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-line-l, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-line-l, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-line-l, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-line-l, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-line-l, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-line-l, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-line-l, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-line-l, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-line-l, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-line-l, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-line-l, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-line-l, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-line-l, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-line-l, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-line-l, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-line-l {
+            margin-block-start: 0em;
+            margin-block-end: 0.5em;
+            width: 700px;
+            transform: translateX(-260px);
+            border-width: 0px;
+            border-top: 1px solid #000; }
+          #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-r-circle, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-r-circle, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-r-circle, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-r-circle, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-r-circle, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-r-circle, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-r-circle, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-r-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-r-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-r-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-r-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-r-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-r-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-r-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-r-circle, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-r-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-r-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-r-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-r-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-r-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-r-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-r-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-r-circle, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-r-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-r-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-r-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-r-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-r-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-r-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-r-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-r-circle, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-r-circle {
+            width: 15px;
+            height: 15px;
+            border: 1px solid black;
+            border-radius: 50px;
+            justify-self: flex-start;
+            transform: translate(699px, 9px); }
+          #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-line-r, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-line-r, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-line-r, #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-line-r, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-line-r, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-line-r, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-line-r, #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-line-r, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-line-r, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-line-r, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-line-r, #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-line-r, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-line-r, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-line-r, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-line-r, #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-line-r, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-line-r, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-line-r, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-line-r, #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-line-r, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-line-r, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-line-r, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-line-r, #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-line-r, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-left .pc-line-r, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap .pc-line-right .pc-line-r, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-left .pc-line-r, #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap .pc-line-right .pc-line-r, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-left .pc-line-r, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap .pc-line-right .pc-line-r, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-left .pc-line-r, #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap .pc-line-right .pc-line-r {
+            margin-block-start: 0em;
+            margin-block-end: 0.5em;
+            width: 700px;
+            transform: translateX(0px);
+            border-width: 0px;
+            border-top: 1px solid #000; }
+        #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap p:nth-child(4), #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap p:nth-child(4), #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap p:nth-child(4), #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap p:nth-child(4), #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap p:nth-child(4), #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap p:nth-child(4), #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap p:nth-child(4), #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap p:nth-child(4), #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap p:nth-child(4), #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap p:nth-child(4), #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap p:nth-child(4), #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap p:nth-child(4), #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap p:nth-child(4), #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap p:nth-child(4), #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap p:nth-child(4), #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap p:nth-child(4) {
+          font-family: "Ubuntu", sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          color: #3C3B42;
+          letter-spacing: 0.06em;
+          line-height: 1.6rem;
+          margin-bottom: 20px; }
+        #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap a:nth-child(5), #pc-l-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap a:nth-child(5), #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap a:nth-child(5), #pc-l-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap a:nth-child(5), #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap a:nth-child(5), #pc-l-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap a:nth-child(5), #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap a:nth-child(5), #pc-l-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap a:nth-child(5), #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap a:nth-child(5), #pc-r-wrapper #pc-l-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap a:nth-child(5), #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap a:nth-child(5), #pc-r-wrapper #pc-l-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap a:nth-child(5), #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-l-col-r-wrap a:nth-child(5), #pc-r-wrapper #pc-r-inner-wrapper #pc-l-col-r .pc-r-col-l-wrap a:nth-child(5), #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-l-col-r-wrap a:nth-child(5), #pc-r-wrapper #pc-r-inner-wrapper #pc-r-col-l .pc-r-col-l-wrap a:nth-child(5) {
+          font-family: "Red Rose", sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 20px;
+          text-decoration-line: underline;
+          text-transform: uppercase;
+          color: #7E7C8A; }
+
+.pc-l-col-grid-a {
+  grid-area: a; }
+
+.pc-l-col-grid-b {
+  grid-area: b; }
+
+.pc-r-col-grid-b {
+  grid-area: b; }
+
+.pc-r-col-grid-a {
+  grid-area: a; }
+
+.pc-r-wrapper-grid {
+  grid-template-areas: "a" "b" !important; }
+  @media screen and (min-width: 1180px) {
+    .pc-r-wrapper-grid {
+      grid-template-areas: "b a" !important; } }
+
+@media screen and (min-width: 800px) {
+  #pcg-wrapper {
+    margin-top: 100px;
+    margin-bottom: 100px; } }
+
+#pcg-wrapper .pcg-inner-wrapper {
+  max-width: 1500px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin: auto;
+  grid-gap: 20px; }
+  @media screen and (min-width: 800px) {
+    #pcg-wrapper .pcg-inner-wrapper {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); } }
+  #pcg-wrapper .pcg-inner-wrapper .pcg-post-cases {
+    display: grid;
+    padding: 10px; }
+    @media screen and (min-width: 800px) {
+      #pcg-wrapper .pcg-inner-wrapper .pcg-post-cases {
+        place-items: center; } }
+    #pcg-wrapper .pcg-inner-wrapper .pcg-post-cases .pcg-image {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      height: 300px; }
+    #pcg-wrapper .pcg-inner-wrapper .pcg-post-cases .pcg-image:hover {
+      animation-name: img-hover;
+      animation-duration: 1s;
+      animation-fill-mode: forwards; }
+    #pcg-wrapper .pcg-inner-wrapper .pcg-post-cases .pcg-short-description {
+      width: 80%; }
+      @media screen and (min-width: 800px) {
+        #pcg-wrapper .pcg-inner-wrapper .pcg-post-cases .pcg-short-description {
+          width: 100%; } }
+      #pcg-wrapper .pcg-inner-wrapper .pcg-post-cases .pcg-short-description p {
+        font-family: "Ubuntu", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 10px;
+        line-height: 11px;
+        text-transform: uppercase;
+        color: #7E7C8A;
+        letter-spacing: 0.06em;
+        margin-block-start: 2em;
+        margin-block-end: 0px; }
+    #pcg-wrapper .pcg-inner-wrapper .pcg-post-cases .pcg-title {
+      width: 80%; }
+      @media screen and (min-width: 800px) {
+        #pcg-wrapper .pcg-inner-wrapper .pcg-post-cases .pcg-title {
+          width: 100%; } }
+      #pcg-wrapper .pcg-inner-wrapper .pcg-post-cases .pcg-title h3 {
+        font-family: "Red Rose", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 35px;
+        color: #3C3B42;
+        margin-block-start: 0px;
+        margin-block-end: 0px; }
+
+.pcg-post-link {
+  text-decoration: none; }
+
+#arrow-wrapper {
+  display: none; }
+  @media screen and (min-width: 800px) {
+    #arrow-wrapper {
+      display: block;
+      width: 85vw;
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      height: 640px;
+      position: absolute;
+      justify-content: flex-end;
+      z-index: 9; } }
+  #arrow-wrapper #arrow-inner-wrapper {
+    display: flex;
+    justify-content: flex-end; }
+    #arrow-wrapper #arrow-inner-wrapper .arrow-icon {
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      height: 40px;
+      width: 40px; }
+    #arrow-wrapper #arrow-inner-wrapper .arrow-icon:hover {
+      cursor: pointer; }
 

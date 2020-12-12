@@ -3,12 +3,16 @@
 // ================================
 
 footer {
+  margin-top: 30px;
   #line-wrap {
+    display: none;
     grid-template-columns: auto minmax(auto, 1150px) auto;
-    display: grid;
     height: 108px;
     width: 100%;
     position: absolute;
+    @include min-screen(800px){
+      display: grid;
+    }
     .line-box:nth-child(1) {
       border-bottom: 1px solid black;
     }
@@ -40,22 +44,34 @@ footer {
       display: grid;
       max-width: 1400px;
       margin: auto;
-      grid-template-rows: repeat(2, 1fr);
+      grid-template-rows: repeat(1, 1fr);
       @include min-screen(900px) {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(1, 1fr);
       }
       .info-section {
         display: grid;
         place-items: center;
         .info {
-          width: 400px;
-          display: flex;
-          justify-content: space-between;
+          width: 110%;
+          display: grid;
+          justify-content: space-evenly;
+          align-items: center;
+          height: 130px;
+          grid-template-areas: 
+          "a a" 
+          "c c"
+          "d b";
+          @include min-screen(800px) {
+            height: 60px;
+            grid-template-areas: "a b c d";
+          }
           p {
+            grid-area: a;
             color: $text-subtle;
           }
           .socials-link {
+            grid-area: b;
             .footer-socials-icon {
               height: 50px;
               width: 50px;
@@ -63,8 +79,14 @@ footer {
               background-position: center;
             }
           }
-          .footer-info{
+          .footer-info {
             color: $text-subtle;
+          }
+          .footer-email {
+            grid-area: c;
+          }
+          .footer-phone {
+            grid-area: d;
           }
         }
       }

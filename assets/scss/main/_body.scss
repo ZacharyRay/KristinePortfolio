@@ -15,9 +15,3 @@ html, body {
     color: $black;
     background-color: $background;
   }
-
-  nav {
-    @include min-screen(800px){
-      margin: 0px 0px 220px 0px;
-    }
-  }

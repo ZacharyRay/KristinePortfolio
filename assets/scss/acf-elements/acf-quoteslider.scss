@@ -1,29 +1,85 @@
 #quote-slider {
   width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px 0px 40px 0px;
+  @include min-screen(800px){
+    margin: 100px 0px 100px 0px;
+  }
+  #quote-slider-btns {
+    width: 100%;
+    #quote-arrow-wrap {
+      max-width: 1500px;
+      display: flex;
+      flex-direction: row;
+      justify-items: center;
+      justify-content: center;
+      padding: 0px 30px;
+      margin: auto;
+      @include min-screen(800px) {
+        justify-content: flex-end;
+      }
+      #quote-arrows {
+        display: flex;
+        flex-direction: row;
+        @include min-screen(800px) {
+          transform: translateX(-100%);
+        }
+        .quote-slider-btn {
+          border: none;
+          background-color: $background;
+          cursor: pointer;
+          @include numbers-small;
+        }
+        .quote-slider-btn:focus {
+          outline: none;
+        }
+        #quote-slide-indicator {
+          display: flex;
+          flex-direction: row;
+          @include numbers-small;
+        }
+      }
+    }
+  }
   #slider-wrap {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    @include min-screen(800px) {
+      display: block;
+    }
+    #quote-icon {
+      background: no-repeat center;
+      background-size: contain;
+      width: 100%;
+      height: 70px;
+      display: grid;
+      @include min-screen(800px) {
+        height: 140px;
+        transform: translateY(-100px);
+        margin-left: 55px;
+      }
+    }
     #quote-wrap {
       max-width: 1500px;
       display: grid;
       grid-template-columns: repeat(1, 1fr);
-      grid-template-rows: 35% 65%;
       margin: auto;
       @include min-screen(800px) {
         grid-template-columns: 15% 85%;
         grid-template-rows: repeat(1, 1fr);
+        transform: translateX(-7%);
       }
-      #quote-icon {
-        background: no-repeat center;
-        background-size: contain;
-        width: 100%;
-        height: 70px;
-        display: grid;
-        @include min-screen(800px) {
-          height: 140px;
-        }
+      .quote {
+        display: none;
       }
       #the-quote {
         p {
           margin-block-end: 0em;
+          margin-block-start: 0em;
         }
         @include title-h2-mobile;
         @include min-screen(800px) {
@@ -33,29 +89,21 @@
           @include title-h2;
         }
       }
-    }
-    #quote-author {
-      h3 {
-        @include title-subtitle;
-      }
-      p {
-        @include small-copy;
+      #quote-author {
+        display: none;
+        @include min-screen(800px){
+          grid-column: 2 / 3;
+        }
+        h3 {
+          @include title-subtitle;
+        }
+        p {
+          @include small-copy;
+        }
       }
     }
   }
 }
-#quote-slider-btns {
-    width: 100%;
-    #quote-arrow-wrap {
-      max-width: 1500px;
-      display: flex;
-      flex-direction: row;
-      justify-items: center;
-      justify-content: flex-end;
-      #quote-arrows {
-        display: flex;
-        flex-direction: row;
-      }
-    }
-  }
-
+.quote-display {
+  display: block !important;
+}

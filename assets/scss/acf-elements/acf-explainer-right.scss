@@ -1,0 +1,91 @@
+#pe-wrapper {
+  margin-bottom: 0px;
+  @include min-screen(800px) {
+    margin-top: 200px;
+    margin-bottom: 200px;
+  }
+  #pe-inner-wrapper {
+    display: grid;
+    grid-template-areas:
+      "b"
+      "a";
+    width: 100%;
+    @include min-screen(800px) {
+      grid-template-areas: "a b";
+      grid-template-columns: 30% 70%;
+    }
+    #pe-col-left {
+      grid-area: a;
+      width: 110%;
+      transform: translateY(96px);
+      #pe-col-left-inner {
+        .pe-col-left-inner-line {
+          display: none;
+          margin-block-start: 0em;
+          margin-block-end: 0.5em;
+          transform: translateX(0px);
+          border-width: 0px;
+          border-top: 1px solid $black;
+          @include min-screen(800px) {
+            display: block;
+            width: 110%;
+          }
+          @include min-screen(1650px) {
+            width: 130%;
+          }
+        }
+        .pe-col-left-inner-img {
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: left;
+          height: 300px;
+          transform: translate(0px, -160px);
+          @include min-screen(800px) {
+            height: 753px;
+            background-position: bottom;
+            transform: translate(0px, -90px);
+          }
+          @include min-screen(1655px) {
+            height: 800px;
+            transform: translate(0px, 27px);
+          }
+        }
+        .pe-col-left-inner-img:hover {
+          animation-name: img-hover-explainer-right;
+          animation-duration: 1s;
+          animation-fill-mode: forwards;
+        }
+      }
+    }
+    #pe-col-right {
+      grid-area: b;
+      background-color: $white;
+      @include min-screen(1300px) {
+        max-height: 630px;
+      }
+      .pe-col-right-content {
+        padding: 40px 10px 100px 10px;
+        max-width: 700px;
+        margin: auto;
+        @include min-screen(800px) {
+          padding: 40px 100px 40px 100px;
+        }
+        h3 {
+          @include body-bold-h3;
+          @include min-screen(800px) {
+            @include title-h3;
+          }
+        }
+        p {
+          @include body-primary;
+        }
+        #pe-col-right-buttons {
+          display: none;
+          @include min-screen(800px) {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

@@ -27,7 +27,7 @@ wp_footer();
     </div>
     <section id="info-footer">
         <div id="info-footer-wrap">
-            <aside class="info-section">
+            <div class="info-section">
                 <div class="info">
                     <p><?= $footer['copyright'] ?></p>
                     <?php foreach($footer['socials'] as $socials) { ?>
@@ -35,14 +35,10 @@ wp_footer();
                         <aside class="footer-socials-icon" style="background-image: url('<?= $socials['social_icon'] ?>')"></aside>
                     </a>
                     <?php } ?>
+                    <a class="footer-info footer-email" href="mailto:<?= $footer['email'] ?>"><?= $footer['email'] ?></a>
+                    <a class="footer-info footer-phone" href="tel:<?= $footer['phone'] ?>"><?= $footer['phone']; ?></a>
                 </div>
-            </aside>
-            <aside class="info-section">
-                <div class="info">
-                    <a class="footer-info" href="mainto:<?= $footer['email'] ?>"><?= $footer['email'] ?></a>
-                    <a class="footer-info" href="tel:<?= $footer['phone'] ?>"><?= $footer['phone']; ?></a>
-                </div>
-            </aside>
+            </div>
         </div>
     </section>
 </footer>

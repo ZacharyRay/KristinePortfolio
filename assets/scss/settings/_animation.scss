@@ -3,10 +3,68 @@
 // ================================
 
 @keyframes fade-in {
-    from {
-        opacity: 0;
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate {
+  animation-name: expand;
+  animation-duration: 0.5s;
+  @keyframes expand {
+    0% {
+      transform: translateX(-300px);
     }
-    to {
-        opacity: 1;
+    100% {
+      transform: translateX(0px);
     }
+  }
+}
+
+.animate-pe-right {
+  animation-name: expand-right;
+  animation-duration: 1s;
+  @keyframes expand-right {
+    0% {
+      transform: translateX(300px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+}
+
+.animate-pe-left {
+  animation-name: expand-left;
+  animation-duration: 1s;
+  @keyframes expand-left {
+    0% {
+      transform: translateX(-300px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+}
+
+@keyframes img-hover {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.04);
+  }
+}
+
+
+@keyframes img-hover-explainer-right {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.04);
+  }
 }

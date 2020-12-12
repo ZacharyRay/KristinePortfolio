@@ -1,0 +1,45 @@
+#ph-page-name {
+    display: block;
+    max-width: 800px;
+    margin: auto;
+    @include min-screen(1055px){
+        display: none;
+    } 
+    #ph-page-name-content {
+        h1 {
+            @include title-h2-mobile-brand;
+            margin-left: 10px;
+        }
+    }
+}
+#ph-wrapper {
+    display: none;
+    margin: 90px 0px 90px 0px;
+    @include min-screen(1055px){
+        display: block;
+    }
+    #ph-inner-wrapper {
+        display: grid;
+        grid-template-columns: 0% 100%;
+        max-width: 1300px;
+        margin: auto;
+        #ph-quote-icon {
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            height: 130px;
+            width: 130px;
+            transform: translateX(14px);
+            @include min-screen(1255px){
+                height: 150px;
+                width: 150px;
+                transform: translateX(85px);
+            }
+        }
+        #ph-content {
+            h1 {
+                @include title-h1-black;
+            }
+        }
+    }
+}

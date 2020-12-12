@@ -1,7 +1,5 @@
 <?php
 
-// Custom REST
-require get_theme_file_path('/includes/acf-route.php');
 
 /**
  * Enqueue CSS and JS files
@@ -10,7 +8,9 @@ function abtion_enqueueFiles() {
 	// CSS
 	wp_enqueue_style('main', get_template_directory_uri() . '/assets/css/build/main.css');
 	// JS
-	wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+    wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+    wp_enqueue_script('lazy', get_template_directory_uri() . '/assets/js/jquery.lazy.min.js');
+    wp_enqueue_script('visible', get_template_directory_uri() . '/assets/js/jquery.visible.min.js');
 	wp_enqueue_script('app', get_template_directory_uri() . '/assets/js/build/app.js');
 }
 add_action('wp_enqueue_scripts', 'abtion_enqueueFiles');
@@ -57,6 +57,7 @@ add_action('admin_init', 'remove_textarea');
 
     function remove_textarea() {
             remove_post_type_support( 'page', 'editor' );
+            remove_post_type_support( 'post', 'editor' );
     };
 
     //options page
@@ -84,3 +85,11 @@ function my_acf_op_init() {
         ));
     }
 };
+
+// Add excerpt
+
+add_post_type_support( 'post', 'excerpt' );
+
+// add featured image
+
+add_theme_support( 'post-thumbnails' );

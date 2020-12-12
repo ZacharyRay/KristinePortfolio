@@ -1,0 +1,27 @@
+#outgoing-buttons {
+    display: flex;
+    flex-direction: row;
+    width: 170px;
+    justify-content: space-between;
+    margin-top: 40px;
+    .explainer-button-link {
+        #explainer-button {
+            border-radius: 50px;
+            height: 30px;
+            width: 120px;
+            background-color: white;
+            border-color: black;
+            border-width: 1px;
+            cursor: pointer;
+        }
+    }
+    .explainer-button-socials {
+        #left-explainer-social-button {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            width: 35px;
+            height: 35px;
+        }
+    }
+}
